@@ -9,7 +9,7 @@ let rekisteri = {
   'sähköposti': []
 };
 
-function poistaRekisteri() {
+function poistaRekisteri() { //tällä funktiolla voi poistaa viimeisen rekisterin
   rekisteri['etunimi'].pop();
   rekisteri['sukunimi'].pop();
   rekisteri['osoite'].pop();
