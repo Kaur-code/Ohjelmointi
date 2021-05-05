@@ -1,4 +1,4 @@
-function pieninSuurin(...args) {
+function pieninSuurin(...args) { //'rest parameter' eli '...' lukee kaikki numerot mitä on pistetty sulkujen sisään
   let result = []
   let suurin = Math.max(...args);
   let pienin = Math.min(...args);
