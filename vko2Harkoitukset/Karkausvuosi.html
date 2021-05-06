@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Karkausvuosi</title>
+  </head>
+  <body>
+<h1>Karkausivuosi</h1>
+<p>Anna vuosiluku</p>
+<input type="text" id="input" value="1">
+<button type="button" onclick="kvuosi()">Let's find out!</button>
+<p id="uuga"></p>
+    <script type="text/javascript">
+let vuosi = document.getElementById('input').value;
+let para = '';
+function kvuosi() {
+  if(vuosi % 4 == 0 && vuosi % 100 != 0) {
+    para = 'Vuosi on karkausvuosi'
+  }
+  else if (vuosi % 400 == 0) {
+    para = 'Vuosi on karkousvuosi';
+  }
+  else {
+    para = 'Vuosi ei ole karkausvuosi'
+  }
+  document.getElementById('uuga').innerHTML = para;
+}
+    </script>
+  </body>
+</html>
