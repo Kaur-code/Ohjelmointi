@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Lukuja</title>
+  </head>
+  <body>
+<h1>Lukujen Summa Ja Keskiarvo</h1>
+<p>Anna viisi lukua</p>
+<input type="number" class="inbutts" id="input1" value=""><br><br>
+<input type="number" class="inbutts" id="input2" value=""><br><br>
+<input type="number" class="inbutts" id="input3" value=""><br><br>
+<input type="number" class="inbutts" id="input4" value=""><br><br>
+<input type="number" class="inbutts" id="input5" value=""><br><br>
+<button type="button" onclick="myFunk()">Let's find out!</button>
+<p id="para"></p>
+
+    <script type="text/javascript">
+    //parseInt funktio muuttaa numerot integereksi
+    let numero2 = parseInt(document.getElementById('input2').value, 10);
+    let numero1 = parseInt(document.getElementById('input1').value, 10);
+    let numero2 = parseInt(document.getElementById('input2').value, 10);
+    let numero3 = parseInt(document.getElementById('input3').value, 10);
+    let numero4 = parseInt(document.getElementById('input4').value, 10);
+    let numero5 = parseInt(document.getElementById('input5').value, 10);
+    function myFunk() {
+      let summa = numero1 + numero2 + numero3 + numero4 + numero5;
+      let keskiarvo = summa/5;
+      document.getElementById('para').innerHTML = `Lukujen summa on ${summa}<br>
+      ja niiden keskiarvo on ${keskiarvo}.`
+    }
+    </script>
+  </body>
+</html>
