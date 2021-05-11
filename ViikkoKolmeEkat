@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Viikko 3 Ensimmäiset tehtävät</title>
+    <style media="screen">
+      .kaikki {
+        display: flex;
+        border: 2px black solid;
+        height: 700px;
+        width: 1600px;
+      }
+      .tehtavat {
+        border: 3px green solid;
+        padding: 10px;
+        width: 380px;
+        height: 200px;
+        margin: 10px;
+        overflow-y: scroll;
+      }
+      .headers {
+        text-align: center;
+      }
+
+      .para {
+        text-align: center;
+      }
+
+      .other {
+        margin-left: 10px;
+      }
+
+      .answers {
+
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Viikko 3 ensimmäiset tehtävät</h1>
+<section class="kaikki">
+  <div class="tehtavat">
+    <h1 class="headers">Tehtävä 1</h1>
+    <p class="other">
+      Anna parillinen luku:
+      <input type="text" id="input1"value="">
+    </p>
+    <button type="button" class="other" id="button1">Let's find out!</button>
+    <p class="answers" id="answer1"></p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">Tehtävä 2</h1>
+    <p class="other">
+      Anna sana:
+      <input type="text" id="input2"value="">
+    </p>
+    <button type="button" class="other" id="button2">Muunna salasanaksi</button>
+    <p class="answers" id="answer2"></p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">Tehtävä 3</h1>
+    <p class="other">
+      Anna sana:
+      <input type="text" id="input3"value="">
+    </p>
+    <button type="button" class="other" id="button3">Onko ö-kirjainta</button>
+    <p class="answers" id="answer3"> </p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">Tehtävä 4</h1>
+    <p class="other">
+      Anna luku:
+      <input type="text" id="input4"value="">
+    </p>
+    <button type="button" class="other" id="button4">Laske kertoma</button>
+    <p class="answers" id="answer4"> </p>
+  </div>-
+</section>
+    <script type="text/javascript">
+      const putton = document.getElementById('button1');
+      putton.addEventListener('click', myFunky);
+
+      function myFunky() {
+        let num = parseInt(document.getElementById('input1').value, 10);
+        let numerot = [];
+        if(num % 2 != 0) {
+          document.getElementById('answer1').innerHTML = 'ANNA PARILLINEN LUKU!';
+        }
+        else {
+          for(let i = 0; i < num; num -= 2) {
+            numerot.push(num);
+            console.log(numerot);
+          }
+        }
+        let poo = numerot.join(" ==> ");
+        document.getElementById('answer1').innerHTML = poo;
+      }
+
+      const putton2 = document.getElementById('button2');
+      putton2.addEventListener('click', myFunky2);
+
+      function myFunky2() {
+        let sana = document.getElementById('input2').value;
+        let splitted = sana.split("");
+        let joined = splitted.join("Ö");
+        let arr = [];
+        arr.push(joined);
+        document.getElementById('answer2').innerHTML = arr;
+      }
+
+      const putton3 = document.getElementById('button3');
+      putton3.addEventListener('click', myFunky3);
+
+      function myFunky3() {
+        let sana = document.getElementById('input3').value;
+        let vastaus = '';
+        for(let i = 0; i < sana.length; i++) {
+          if(sana[i] == 'ö' || sana[i] == 'Ö') {
+            vastaus = "Sanassa on ö-kirjain";
+          }
+          else {
+            vastaus = "Sanassa ei ole ö-kirjainta";
+          }
+        }
+        document.getElementById('answer3').innerHTML = vastaus;
+      }
+
+      const putton4 = document.getElementById('button4');
+      putton4.addEventListener('click', myFunky4);
+
+      function myFunky4() {
+        let num = parseInt(document.getElementById('input4').value, 10) {
+          
+        }
+      }
+    </script>
+  </body>
+</html>
