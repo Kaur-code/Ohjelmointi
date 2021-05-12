@@ -131,7 +131,21 @@
       putton4.addEventListener('click', myFunky4);
 
       function myFunky4() {
-        let num = parseInt(document.getElementById('input4').value, 10)
+        let num = parseInt(document.getElementById('input4').value, 10);
+        const numero = parseInt(document.getElementById('input4').value, 10);
+        let varasto = [];
+        let vastaus = 0;
+        for(let i = 0; i < num; num--) {
+          if(varasto.length == 0) {
+            varasto.push(num);
+          }
+          else {
+            vastaus = varasto * num;
+            varasto.push(vastaus);
+            varasto.shift();
+          }
+        }
+        document.getElementById('answer4').innerHTML = `Luvun ${numero} kertoma on ${vastaus}`;
       }
     </script>
   </body>
