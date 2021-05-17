@@ -6,18 +6,26 @@
     <style media="screen">
       .kaikki {
         display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: stretch;
         border: 2px solid black;
-        height: 700px;
-        width: 1600px;
+        height: 800px;
+        width: 1550px;
       }
       .tehtavat {
         border: 3px solid black;
         padding: 10px;
-        width: 380px;
+        width: 340px;
         height: 200px;
         margin: 10px;
         overflow-y: scroll;
       }
+
+      .inputs {
+      margin-top: 5px;
+      }
+
       .headers {
         text-align: center;
       }
@@ -44,7 +52,7 @@
       Anna parillinen luku:
       <input type="text" id="input1"value="">
     </p>
-    <button type="button" class="other" id="button1">Let's find out!</button>
+    <button type="button" class="other" id="button1">Tulosta parilliset</button>
     <p class="answers" id="answer1"></p>
   </div>
 
@@ -65,18 +73,76 @@
       <input type="text" id="input3"value="">
     </p>
     <button type="button" class="other" id="button3">Onko ö-kirjainta</button>
-    <p class="answers" id="answer3"> </p>
+    <p class="answers" id="answer3"></p>
   </div>
 
   <div class="tehtavat">
     <h1 class="headers">Tehtävä 4</h1>
     <p class="other">
       Anna luku:
-      <input type="text" id="input4"value="">
+      <input type="text" id="input4" value="">
     </p>
     <button type="button" class="other" id="button4">Laske kertoma</button>
     <p class="answers" id="answer4"> </p>
-  </div>-
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">Tehtävä 5</h1>
+    <button type="button" class="other" id="button5">Hip Heijaa luvut</button>
+    <p class="answers" id="answer5"> </p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">Tehtävä 6</h1>
+    <button type="button" class="other" id="button6">10 ensimmäistä lukua</button>
+    <p class="answers" id="answer6"></p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">Tehtävä 7</h1>
+    <button type="button" class="other" id="button7">Laske 10 ensimmäistä numeroa</button>
+    <p class="answers" id="answer7"></p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">Tehtävä 8</h1>
+    <p class="other">
+      Anna korotettava luku:
+      <input type="text" id="input8" value="">
+      Anna potenssi:
+      <input type="text" id="inputEight" value="">
+    </p>
+    <button type="button" class="other" id="button8">Laske</button>
+    <p class="answers" id="answer8"></p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">Tehtävä 9</h1>
+    <p class="other">
+      Anna luku 1:
+      <input type="text" class="inputs" id="num1" value=""><br>
+      Anna luku 2:
+      <input type="text" class="inputs" id="num2" value=""><br>
+      Anna luku 3:
+      <input type="text" class="inputs" id="num3" value=""><br>
+      Anna luku 4:
+      <input type="text" class="inputs" id="num4" value=""><br>
+      Anna luku 5:
+      <input type="text" class="inputs" id="num5" value=""><br>
+    </p>
+    <button type="button" class="other" id="button9">Etsi suurin ja pienin</button>
+    <p class="answers" id="answer9"></p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">Tehtävä 10</h1>
+    <p class="other">
+      Anna muokattava salasana:
+      <input type="text" id="input10" value="">
+    </p>
+    <button type="button" class="other" id="button10">Laske</button>
+    <p class="answers" id="answer10"></p>
+  </div>
 </section>
     <script type="text/javascript">
       const putton = document.getElementById('button1');
@@ -85,17 +151,19 @@
       function myFunky() {
         let num = parseInt(document.getElementById('input1').value, 10);
         let numerot = [];
+        let vastaus = ' ';
         if(num % 2 != 0) {
-          document.getElementById('answer1').innerHTML = 'ANNA PARILLINEN LUKU!';
+          console.log('poo')
+          vastaus = "ANNA PARILLINEN LUKU!"
         }
         else {
           for(let i = 0; i < num; num -= 2) {
             numerot.push(num);
             console.log(numerot);
           }
+          vastaus = numerot.join(" ==> ");
         }
-        let poo = numerot.join(" ==> ");
-        document.getElementById('answer1').innerHTML = poo;
+        document.getElementById('answer1').innerHTML = vastaus;
       }
 
       const putton2 = document.getElementById('button2');
@@ -146,6 +214,104 @@
           }
         }
         document.getElementById('answer4').innerHTML = `Luvun ${numero} kertoma on ${vastaus}`;
+      }
+
+      const putton5 = document.getElementById('button5');
+      putton5.addEventListener('click', myFunky5);
+
+      function myFunky5() {
+        let numerot = [];
+        for(let i = 1; i <= 100; i++) {
+          numerot.push(i)
+          if(i % 3 == 0 && i % 5 == 0) {
+            numerot.pop();
+            numerot.push('hipheijaa')
+          }
+          else if(i % 3 == 0) {
+            numerot.pop();
+            numerot.push('Hip');
+          }
+          else if(i % 5 == 0) {
+            numerot.pop();
+            numerot.push('Heijaa');
+          }
+        }
+        let vastaus = numerot.join(" ");
+        document.getElementById('answer5').innerHTML = vastaus;
+      }
+
+      const putton6 = document.getElementById('button6');
+      putton6.addEventListener('click', myFunky6);
+
+      function myFunky6() {
+        let numerot = [];
+        for(let i = 1; i <= 10; i++) {
+          numerot.push(i);
+        }
+        let vastaus = numerot.join(" ");
+        document.getElementById('answer6').innerHTML = vastaus;
+      }
+
+      const putton7 = document.getElementById('button7');
+      putton7.addEventListener('click', myFunky7);
+
+      function myFunky7() {
+        let numerot = [];
+        let vastaus = '';
+        for(let i = 1; i <= 10; i++) {
+          if(numerot.length == 0) {
+            numerot.push(i);
+          }
+          else {
+            vastaus = i + parseInt(numerot, 10);
+            numerot.push(vastaus);
+            numerot.shift();
+          }
+        }
+        document.getElementById('answer7').innerHTML = vastaus;
+      }
+
+      const putton8 = document.getElementById('button8');
+      putton8.addEventListener('click', myFunky8);
+
+      function myFunky8() {
+        const input1 = parseInt(document.getElementById('input8').value, 10);
+        const potenssi = parseInt(document.getElementById('inputEight').value, 10);
+        let vastaus = 0;
+        let varasto = [];
+        for(let i = 0; i < potenssi; i++) {
+          if(varasto.length == 0) {
+            varasto.push(input1)
+          }
+          else {
+            vastaus = varasto * input1;
+            varasto.push(vastaus);
+            varasto.shift();
+          }
+        }
+        document.getElementById('answer8').innerHTML = varasto;
+      }
+
+      const putton9 = document.getElementById('button9');
+      putton9.addEventListener('click', myFunky9);
+
+      function myFunky9() {
+        const num1 = parseInt(document.getElementById('num1').value, 10);
+        const num2 = parseInt(document.getElementById('num2').value, 10);
+        const num3 = parseInt(document.getElementById('num3').value, 10);
+        const num4 = parseInt(document.getElementById('num4').value, 10);
+        const num5 = parseInt(document.getElementById('num5').value, 10);
+
+        let max = Math.max(num1, num2, num3, num4, num5);
+        let min = Math.min(num1, num2, num3, num4, num5);
+        document.getElementById('answer9').innerHTML = `Suurin numero on ${max} ja pienin numero on ${min}`;
+      }
+
+      const putton10 = document.getElementById('button10');
+      putton10.addEventListener('click', myFunky10);
+
+      function myFunky10() {
+
       }
     </script>
   </body>
