@@ -140,8 +140,21 @@
       Anna muokattava salasana:
       <input type="text" id="input10" value="">
     </p>
-    <button type="button" class="other" id="button10">Laske</button>
+    <button type="button" class="other" id="button10">Muunna salasanaksi</button>
     <p class="answers" id="answer10"></p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">Tehtävä 11</h1>
+    <p class="other">
+      Anna pienempi numero:
+      <input type="text" id="input11" value="">
+      Anna isompi numero:
+      <input type="text" id="inputEleven" value="">
+    </p>
+    <button type="button" class="other" id="button11">Näytä parilliset ja parittomat erikseen ja niiden summa</button>
+    <p class="answers" id="answer11"></p>
+    <p class="answers" id="answerEleven"></p>
   </div>
 </section>
     <script type="text/javascript">
@@ -311,8 +324,75 @@
       putton10.addEventListener('click', myFunky10);
 
       function myFunky10() {
+        const sana = document.getElementById('input10').value;
+        const splitted = sana.split('');
+        let varasto = [];
 
+        for(let i = 0; i < splitted.length; i++) {
+          const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+          const randomKirjain = alphabet.charAt(Math.floor(Math.random() *
+        alphabet.length));
+        varasto.push(splitted[i]);
+        varasto.push(randomKirjain);
+        console.log(varasto);
+        }
+        let vastaus = varasto.join("");
+        document.getElementById('answer10').innerHTML = vastaus;
       }
+
+      const putton11 = document.getElementById('button11');
+      putton11.addEventListener('click', myFunky11);
+
+      function myFunky11() {
+        let num1 = parseInt(document.getElementById('input11').value, 10);
+        let numer1 = num1;
+        let number1 = num1;
+        let nu1 = num1;
+        let num2 = parseInt(document.getElementById('inputEleven').value, 10);
+
+        let parilliset = [];
+        let parittomat = [];
+
+        let parittomatTotal = 0;
+        let parillisetTotal = 0;
+
+        if(num1 % 2 == 0) {
+        for(num1; num1 <= num2; num1 += 2) {
+          parilliset.push(num1);
+          }
+          for(let i = 0; i < parilliset.length; i++) {
+            parillisetTotal += parilliset[i];
+        }
+        numer1++
+        for(numer1; numer1 <= num2; numer1 += 2) {
+          parittomat.push(numer1);
+        }
+        for(let i = 0; i < parittomat.length; i++) {
+          parittomatTotal += parittomat[i];
+        }
+      }
+      else {
+        number1++
+        for(number1; number1 <= num2; number1 += 2) {
+          parilliset.push(number1);
+        }
+        for(let i = 0; i < parilliset.length; i++) {
+          parillisetTotal += parilliset[i];
+        }
+        for(nu1; nu1 <= num2; nu1 += 2) {
+          parittomat.push(nu1);
+        }
+        for(let i = 0; i < parittomat.length; i++) {
+          parittomatTotal += parittomat[i];
+        }
+      }
+      let vastaus1 = parilliset.join(' ');
+      let vastaus2 = parittomat.join(' ');
+      document.getElementById('answer11').innerHTML = `Parilliset numerot: ${vastaus1}
+       ja niiden summa: ${parillisetTotal}`;
+      document.getElementById('answerEleven').innerHTML = `Parittomat numerot: ${vastaus2}
+      ja niiden summa: ${parittomatTotal}`;
+    }
     </script>
   </body>
 </html>
