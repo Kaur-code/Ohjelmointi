@@ -10,7 +10,7 @@
         flex-wrap: wrap;
         align-content: stretch;
         border: 2px solid black;
-        height: 800px;
+        height: 1000px;
         width: 1550px;
       }
       .tehtavat {
@@ -38,9 +38,6 @@
         margin-left: 10px;
       }
 
-      .answers {
-
-      }
     </style>
   </head>
   <body>
@@ -152,9 +149,42 @@
       Anna isompi numero:
       <input type="text" id="inputEleven" value="">
     </p>
-    <button type="button" class="other" id="button11">Näytä parilliset ja parittomat erikseen ja niiden summa</button>
+    <button type="button" class="other" id="button11">Näytä parilliset ja parittomat erikseen
+       ja niiden summa</button>
     <p class="answers" id="answer11"></p>
     <p class="answers" id="answerEleven"></p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">TehtäväToka 1</h1>
+    <p class="other">
+      Anna muokattava salasana:
+      <input type="text" id="inputToka1" value="">
+    </p>
+    <button type="button" class="other" id="buttonToka1">Laske kirjainpisteet</button>
+    <p class="answers" id="answerToka1"></p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">TehtäväToka 2</h1>
+    <p class="other">Lotto</p>
+    <button type="button" class="other" id="buttonToka2">Arvo numerot</button>
+    <p class="answers" id="answerToka2"></p>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">TehtäväToka 3</h1>
+    <p class="other">Numerot: [[5, 3, 2, 1], [23, 1, 11, 2],<br>
+       [20, 5, 2, 7], [13, 16, 0, 0,], [1, 5, 18, 3]]</p>
+    <button type="button" class="other" id="buttonToka3">Muunna taulukoksi</button>
+    <div id="answerToka3">
+    </div>
+  </div>
+
+  <div class="tehtavat">
+    <h1 class="headers">TehtäväToka 4</h1>
+    <button type="button" class="other" id="buttonToka4">Arvo 5 korttia</button>
+    <p class="answers" id="answerToka4"></p>
   </div>
 </section>
     <script type="text/javascript">
@@ -166,7 +196,6 @@
         let numerot = [];
         let vastaus = ' ';
         if(num % 2 != 0) {
-          console.log('poo')
           vastaus = "ANNA PARILLINEN LUKU!"
         }
         else {
@@ -393,6 +422,150 @@
       document.getElementById('answerEleven').innerHTML = `Parittomat numerot: ${vastaus2}
       ja niiden summa: ${parittomatTotal}`;
     }
+
+      const puttonToka1 = document.getElementById('buttonToka1');
+      puttonToka1.addEventListener('click', myFunkyToka1);
+
+      function myFunkyToka1() {
+        const sana = document.getElementById('inputToka1').value;
+        let pisteet = 0;
+        for(let i = 0; i < sana.length; i++) {
+          let kirjain = sana.charAt(i);
+          switch (kirjain) {
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'n':
+            case 's':
+            case 't':
+            case 'A':
+            case 'E':
+            case 'I':
+            case 'N':
+            case 'S':
+            case 'T':
+              pisteet++;
+                break;
+            case 'o':
+            case 'ä':
+            case 'k':
+            case 'l':
+            case 'O':
+            case 'Ä':
+            case 'K':
+            case 'L':
+              pisteet += 2;
+                break;
+            case 'u':
+            case 'm':
+            case 'U':
+            case 'M':
+              pisteet += 3;
+                break;
+            case 'y':
+            case 'h':
+            case 'j':
+            case 'p':
+            case 'r':
+            case 'v':
+            case 'Y':
+            case 'H':
+            case 'J':
+            case 'P':
+            case 'R':
+            case 'V':
+              pisteet += 4;
+                break;
+            case 'ö':
+            case 'd':
+            case 'Ö':
+            case 'D':
+              pisteet += 7;
+                break;
+            case 'b':
+            case 'f':
+            case 'g':
+            case 'B':
+            case 'F':
+            case 'G':
+              pisteet += 8;
+                break;
+            case 'c':
+            case 'C':
+              pisteet += 10;
+                break;
+            default:
+              pisteet += 12;
+                break;
+          }
+        }
+        document.getElementById('answerToka1').innerHTML = `Sanan ${sana} pisteet ovat ${pisteet}`;
+      }
+
+      const puttonToka2 = document.getElementById('buttonToka2');
+      puttonToka2.addEventListener('click', myFunkyToka2);
+
+      function myFunkyToka2() {
+        const arvoNum1 = Math.floor(Math.random() * 40);
+        const arvoNum2 = Math.floor(Math.random() * 40);
+        const arvoNum3 = Math.floor(Math.random() * 40);
+        const arvoNum4 = Math.floor(Math.random() * 40);
+        const arvoNum5 = Math.floor(Math.random() * 40);
+        const arvoNum6 = Math.floor(Math.random() * 40);
+        const arvoNum7 = Math.floor(Math.random() * 40);
+
+        document.getElementById('answerToka2').innerHTML = `${arvoNum1}, ${arvoNum2}, ${arvoNum3},
+        ${arvoNum4}, ${arvoNum5}, ${arvoNum6}, ${arvoNum7}`
+      }
+
+      const puttonToka3 = document.getElementById('buttonToka3');
+      puttonToka3.addEventListener('click', myFunkyToka3);
+
+      function myFunkyToka3() {
+        let numerot = [[5, 3, 2, 1], [23, 1, 11, 2], [20, 5, 2, 7], [13, 16, 0, 0], [1, 5, 18, 3]];
+        let taulukko = '<table border="1">';
+
+        for(let i = 0; i < numerot.length; i++) {
+          taulukko += '<tr>';
+          for(let j = 0; j < numerot[i].length; j++) {
+            taulukko += '<td>' + numerot[i][j] + '</td>';
+          }
+          taulukko += '</tr>';
+        }
+        taulukko += '</table>';
+        document.getElementById('answerToka3').innerHTML = taulukko;
+        console.log(numerot)
+      }
+
+      const puttonToka4 = document.getElementById('buttonToka4');
+      puttonToka4.addEventListener('click', myFunkyToka4);
+
+      function myFunkyToka4() {
+        const kortit1 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
+        const kortit2 = ['♣', '♢', '♤', '♡'];
+        let varasto = [];
+        for(let i = 0; i < 5; i++) {
+          let v1 = kortit1[Math.floor(Math.random() * kortit1.length)];
+          let v2 = kortit2[Math.floor(Math.random() * kortit2.length)];
+          varasto.push(v2);
+          varasto.push(v1);
+        }
+        let slice1 = varasto.slice(0, 2);
+        let slice2 = varasto.slice(2, 4);
+        let slice3 = varasto.slice(4, 6);
+        let slice4 = varasto.slice(6, 8);
+        let slice5 = varasto.slice(8, 10);
+
+        let joined1 = slice1.join('');
+        let joined2 = slice2.join('');
+        let joined3 = slice3.join('');
+        let joined4 = slice4.join('');
+        let joined5 = slice5.join('');
+        console.log(varasto)
+        console.log(joined2);
+        document.getElementById('answerToka4').innerHTML = `${joined1}, ${joined2},  ${joined3},
+        ${joined4},  ${joined5}`
+      }
     </script>
   </body>
 </html>
