@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Arvauspeli</title>
+  </head>
+  <body>
+    <h1>VALITSE NUMERO (1-10)</h1>
+    <p>VAIN KOLME ARVAUSTA</p>
+    <p>ARVAA NUMERO OIKEIN KOLME KERTAA PERÄKKÄIN FOR GRAND PRIZE</p>
+    <input type="number" id="valNum" value=""><br><br>
+    <button type="button" id='putton', onclick="pelaa()">ARVAA!</button><br>
+    <p id='voitot'>Voitot: 0</p>
+    <p id='tappiot'>Tappiot: 0</p>
+    <button type="button" onclick='reset()'>RESET</button>
+    <p id='grandPrize'></p>
+    <script>
+      const butt = document.getElementById('putton');
+      var voitot = 0;
+      var tappiot = 0;
+      var kerrat = 0;
+      function reset() {
+        voitot = 0
+        tappiot = 0
+        kerrat = 0
+        document.getElementById('voitot').innerHTML = `Voitot: 0`
+        document.getElementById('tappiot').innerHTML = `Tappiot: 0`
+      }
+      function pelaa() {
+        kerrat++;
+        let valittuNum = document.getElementById('valNum').value;
+        const rantom = Math.floor(Math.random()*10)+1;
+        if(voitot == 3) {
+          document.getElementById('grandPrize').innerHTML = '[REDACTED]'
+        } else if (kerrat <= 3){
+        for(let i = 0; i < 10; i++) {
+           if(i == valittuNum){
+            if(valittuNum == rantom) {
+              alert("Arvasit oikein!");
+              voitot++;
+            } else if(valittuNum > rantom) {
+              alert(`Valitsit liian SUUREN numeron, oikea numero oli: ${rantom}`);
+              tappiot++;
+            } else {
+              alert(`Valitsit liian pienen numeron, oikea numero oli: ${rantom}`);
+              tappiot++;
+            }
+          }
+        }
+      } else {
+        alert('HÄVISIT PELIN... RESET?')
+      }
+      document.getElementById('voitot').innerHTML = `Voitot: ${voitot}`
+      document.getElementById('tappiot').innerHTML = `Tappiot: ${tappiot}`
+        }
+
+    </script>
+  </body>
+</html>
