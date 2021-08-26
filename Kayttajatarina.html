@@ -1,44 +1,109 @@
-<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <style media="screen">
+      * {
+        padding: 3px;
+      }
       .wid1 {
         width: 500px;
+      }
+      #para {
+        width: 500px;
+      }
+      .form {
+        margin-left: 30px;
+        position: fixed;
+        border: 1px solid black
+
+      }
+      #otsikko {
+        text-align: center;
+        position: relative;
+      }
+      #kuvaus {
+        text-align: center;
+        position: relative;
+      }
+      #laheta {
+        margin-bottom: 5px;
+        margin-left: 5px;
+      }
+      #pudotus {
+        margin-left: 5px;
       }
     </style>
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
-    <h1 id='otsikko'>Kirjaudu</h1>
-    <p id='kuvaus'>anna nimesi ja stuff</p>
-    <form id='kyselylomake' method="post">
+    <form id='kyselylomake' method="post" class='form' onsubmit="return tarkasta()" action="Lomake2.html">
+      <h1 id='otsikko'>Kirjaudu</h1>
+      <p id='kuvaus'>anna nimesi ja stuff</p>
       <table class='wid1'>
         <tr>
           <td><strong>Kirjoita nimesi.<strong></td>
         </tr>
         <tr>
-          <td id='nimi'>Nimesi: </td>
-          <td><input type="text" name="" value=""></td>
+          <td>Nimesi: </td>
+          <td><input type="text" id='nimi' value=""></td>
         </tr>
         <tr>
           <td><strong>Kirjoita sähköpostisi.<strong></td>
         </tr>
         <tr>
-          <td id='email'>Sähköposti: </td>
-          <td><input type="text" name="" value=""></td>
+          <td>Sähköposti: </td>
+          <td><input type="text" id='email' value=""></td>
         </tr>
         <tr>
           <td><strong>Kuinka vanha olet?<strong></td>
         </tr>
         <tr>
-          <td id='ika'>Ikä: </td>
-          <td><input type="text" name="" value=""></td>
+          <td>Ikä: </td>
+          <td><input type="text" id='ika' value=""></td>
         </tr>
       </table>
+      <p><strong>Kuinka fiksu olet:</strong></p>
       <select id='pudotus'>
-        <option value="">wow</option>
-      </select>
+        <option value="">Minä olen fiksu</option>
+        <option value="">Minä osaan vain kuullostaa fiksulta</option>
+        <option value="">Ainakin 300 iq</option>
+      </select><br><br>
+      <table>
+        <tr>
+          <td><strong>Sukupuoli:</strong></td>
+        </tr>
+        <tr>
+          <td>Mies</td>
+          <td><input type='radio' name='snoop'></td>
+        </tr>
+        <tr>
+          <td>Nainen</td>
+          <td><input type="radio" name='snoop'></td>
+        </tr>
+        <tr>
+          <td>Automobiili</td>
+          <td><input type="radio" name='snoop'></td>
+        </tr>
+        <tr>
+          <td><strong>Osaat ajaa:</strong></td>
+        </tr>
+        <tr>
+          <td>Autoa</td>
+          <td><input type='checkbox' name='woop1'></td>
+        </tr>
+        <tr>
+          <td>Lentokonetta</td>
+          <td><input type='checkbox' name='woop2'></td>
+        </tr>
+        <tr>
+          <td>Caterpillar 6090 FS Excavator</td>
+          <td><input type='checkbox' name='woop3'></td>
+        </tr>
+      </table>
+      <p><strong>Palautetta:<strong></p>
+      <textarea name="name" rows="5" cols="57"></textarea><br><br>
+      <button type="submit" id='laheta'>Läheta lomake</button>
     </form>
+    <script src="Kayttajatarina.js" charset="utf-8"></script>
   </body>
 </html>
