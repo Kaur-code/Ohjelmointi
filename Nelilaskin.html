@@ -56,7 +56,7 @@
   <body>
     <section>
       <div class="vastausDiv">
-        <input type="text" readonly='readonly' id="vastaus" value="s">
+        <input type="text" readonly='readonly' id="vastaus" value="blah">
       </div>
       <div class="buttons">
         <button type="button" class='button2' id='ac'>AC</button>
@@ -117,12 +117,13 @@
       </div>
     </section>
     <script type="text/javascript">
+      const two = document.getElementById('two');
       const three = document.getElementById('three');
       const sum = document.getElementById('sum');
       let vas = document.getElementById('vastaus');
       three.addEventListener('click', addNum)
-      function addNum() {
-        console.log(vas.value);
+      function addNum(num) {
+        console.log(num.value);
     }
     </script>
   </body>
