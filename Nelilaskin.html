@@ -51,12 +51,18 @@
         border: 11px red solid;
         width: 110px;
       }
+      #vastaus2 {
+        margin-top: 52px;
+        font-size: 40px;
+        text-align: center;
+        border: none;
+      }
     </style>
   </head>
   <body>
     <section>
       <div class="vastausDiv">
-        <input type="text" readonly='readonly' id="vastaus" value="blah">
+        <p id='vastaus'></p>
       </div>
       <div class="buttons">
         <button type="button" class='button2' id='ac'>AC</button>
@@ -65,66 +71,122 @@
         <button type="button" class='button2' id='c'>C</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='percent'>%</button>
+        <button type="button" value='%' class='button2' id='percent'>%</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='divide'>/</button>
+        <button type="button" value='/' class='button2' id='divide'>/</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='seven'>7</button>
+        <button type="button" value='7' class='button2' id='seven'>7</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='eight'>8</button>
+        <button type="button" value='8' class='button2' id='eight'>8</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='nine'>9</button>
+        <button type="button" value='9' class='button2' id='nine'>9</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='multiply'>*</button>
+        <button type="button" value='*' class='button2' id='multiply'>*</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='four'>4</button>
+        <button type="button" value='4' class='button2' id='four'>4</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='five'>5</button>
+        <button type="button" value='5' class='button2' id='five'>5</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='six'>6</button>
+        <button type="button" value='6' class='button2' id='six'>6</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='subtract'>-</button>
+        <button type="button" value='-'class='button2' id='subtract'>-</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='one'>1</button>
+        <button type="button" value='1' class='button2' id='one'>1</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='two'>2</button>
+        <button type="button" value='2' class='button2' id='two'>2</button>
       </div>
       <div class="buttons">
         <button type="button" value='3' class='button2' id='three'>3</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='sum'>+</button>
+        <button type="button" value='+' class='button2' id='sum'>+</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='zero'>0</button>
+        <button type="button" value='0' class='button2' id='zero'>0</button>
       </div>
       <div class="buttons">
-        <button type="button" class='button2' id='comma'>,</button>
+        <button type="button" value='.' class='button2' id='comma'>.</button>
       </div>
       <div class="egual">
         <button type="button" class='button2' id='equal'>=</button>
       </div>
     </section>
     <script type="text/javascript">
+      const ac = document.getElementById('ac');
+      const c = document.getElementById('c');
+      const percent = document.getElementById('percent');
+      const div = document.getElementById('divide');
+      const seven = document.getElementById('seven');
+      const eight = document.getElementById('eight');
+      const nine = document.getElementById('nine');
+      const multiply = document.getElementById('multiply');
+      const four = document.getElementById('four');
+      const five = document.getElementById('five');
+      const six = document.getElementById('six');
+      const subtract = document.getElementById('subtract');
+      const one = document.getElementById('one');
       const two = document.getElementById('two');
       const three = document.getElementById('three');
+      const zero = document.getElementById('zero');
       const sum = document.getElementById('sum');
+      const comma = document.getElementById('comma');
+      const equal = document.getElementById('equal');
       let vas = document.getElementById('vastaus');
-      three.addEventListener('click', addNum)
-      function addNum(num) {
-        console.log(num.value);
+      let arr = [];
+      let poop = '';
+      let theBag = 0;
+      one.addEventListener('click', addNum, false);
+      two.addEventListener('click', addNum, false);
+      three.addEventListener('click', addNum, false);
+      four.addEventListener('click', addNum, false);
+      five.addEventListener('click', addNum, false);
+      six.addEventListener('click', addNum, false);
+      seven.addEventListener('click', addNum, false);
+      eight.addEventListener('click', addNum, false);
+      nine.addEventListener('click', addNum, false);
+      zero.addEventListener('click', addNum, false);
+      sum.addEventListener('click', addNum, false);
+      subtract.addEventListener('click', addNum, false);
+      div.addEventListener('click', addNum, false);
+      multiply.addEventListener('click', addNum, false);
+      percent.addEventListener('click', addNum, false);
+      comma.addEventListener('click', addNum, false);
+      equal.addEventListener('click', done, false);
+      c.addEventListener('click', cee, false);
+      ac.addEventListener('click', iSea, false)
+      function addNum(evt) {
+        let value = evt.currentTarget.value; // value variable gets the value of clicked button
+        arr.push(value);
+        poop = arr.join(''); // join the array so that eval function works
+        console.log(arr)
+        vas.innerHTML = poop;
     }
+      function done() {
+        theBag = eval(poop); // eval function calculates everything for me
+        poop.length = 0;
+        vas.innerHTML = theBag;
+      }
+      function cee() {
+        arr.length = 0;
+        if (theBag == 0) {
+          vas.innerHTML = '';
+        }
+      }
+      function iSea() {
+        arr.length = 0;
+        vas.innerHTML = '';
+      }
     </script>
   </body>
 </html>
