@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tehtävälista</title>
+    <style media="screen">
+      body {
+        background-color: #b0b0b0;
+      }
+      .start {
+        position: fixed;
+        text-align: center;
+        margin-left: 600px;
+      }
+      .vihr {
+        color: green;
+      }
+      .puna {
+        color: red;
+      }
+      #inbutt {
+        width: 500px;
+      }
+      .newEl {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        margin-top: 15px;
+        position: relative;
+        background-color: blue;
+        width: 660px;
+        height: 50px;
+        padding: 8px;
+      }
+      .newEl:hover {
+        background-color: #036a96;
+      }
+      .newPr {
+        color: white;
+        font-size: 25px;
+      }
+      .newBt {
+        height: 25px;
+        width: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="start">
+      <h1>Tehtävälista</h1>
+      <p>JOS OSAAT KIRJOITTAA, NIIN KIRJOITA SINUN TEHTÄVÄT ALLA OLEVAAN LAATIKKOON.</p>
+      <p class='vihr'>JOS OLET TEHTÄVÄN TEHNYT, NIIN NAPAUTA TEHTÄVÄÄ.</p>
+      <p class='puna'>JOS LUOVUTAT TEHTÄVÄN TEKEMISEEN, NIIN NAPAUTA X-KIRJAINTA.</p>
+      <input type="text" id='inbutt' value="">
+      <button type="button" id='butt' onclick="doIt()">LISÄÄ TEHTÄVÄ!</button>
+    </div>
+    <script type="text/javascript">
+      function doIt() {
+        const start = document.querySelector('.start');
+        let input = document.getElementById('inbutt').value;
+
+        const newDiv = document.createElement('div');
+        newDiv.classList.add('newEl');
+        start.appendChild(newDiv);
+
+        newDiv.addEventListener('click', done);
+
+        const newPar = document.createElement('p');
+        newPar.classList.add('newPr');
+        newPar.textContent = input;
+        newDiv.appendChild(newPar);
+        document.getElementById('inbutt').value = '';
+
+        const puton = document.createElement('BUTTON');
+        puton.classList.add('newBt');
+        puton.textContent = 'X'
+        newDiv.appendChild(puton);
+
+        puton.addEventListener('click', remov);
+      }
+      function done(evt) {
+        evt.currentTarget.style.backgroundColor = 'green';
+      }
+      function remov(evt) {
+        evt.currentTarget.parentElement.remove();
+      }
+    </script>
+  </body>
+</html>
