@@ -1,89 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <script src="Muistipeli.js"></script>
-    <link rel="stylesheet" href="Muistipeli.css">
-    <title>Muistipeli(4x4)</title>
+    <title>Muistipeli</title>
+    <style media="screen">
+      h1 {
+        text-align: center;
+      }
+      .thing {
+        display: flex;
+        flex-wrap: wrap;
+        position: fixed;
+        left: 640px;
+        border: 5px grey solid;
+        width: 640px;
+        height: 640px;
+      }
+      .kortit {
+        border: 5px black solid;
+        width: 150px;
+        height: 150px;
+        position: relative;
+      }
+      .kortinPaa {
+        background-color: green;
+        position: absolute;
+        top: 0px;
+        width: 150px;
+        height: 150px;
+      }
+      .kortinSelka:hover {
+        opacity: 0;
+      }
+      .kortinSelka {
+        background-color: blue;
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        top: 0px;
+      }
+      .pls {
+        font-size: 60px;
+        position: relative;
+        bottom: 15px;
+        left: 60px;
+      }
+      .pls2 {
+        font-size: 60px;
+        position: relative;
+        bottom: 15px;
+        left: 45px;
+      }
+    </style>
   </head>
   <body>
-
-  <h1 id="otsikko">Muistipeli</h1>
-<div id="valikko">
-  <button id="nappula">Pelityypit</button>
-  <div id="tyypit">
-    <a id="one" href="Muistipeli.html">4x4</a>
-    <a id="two" href="#">4x6</a>
-    <a id="three" href="#">6x6</a>
-  </div>
-</div>
-
-<section class="peli">
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/OneDrive/Pictures/the%20funny/banana.jpg" alt="Banaani">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/OneDrive/Pictures/the%20funny/banana.jpg" alt="Banaani">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/OneDrive/Pictures/the%20funny/harem.png" alt="SwagCat">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/OneDrive/Pictures/the%20funny/harem.png" alt="SwagCat">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/OneDrive/Pictures/the%20funny/pinapple.jpg" alt="Ananas">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/OneDrive/Pictures/the%20funny/pinapple.jpg" alt="Ananas">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/OneDrive/Desktop/putin.jpeg" alt="Putin">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/OneDrive/Desktop/putin.jpeg" alt="Putin">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/Downloads/McShrek.jpeg" alt="McShrek">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/Downloads/McShrek.jpeg" alt="McShrek">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/Downloads/drip.jpeg" alt="China">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/Downloads/drip.jpeg" alt="China">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/Downloads/troll.jpeg" alt="Troll">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/Downloads/troll.jpeg" alt="Troll">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/Downloads/comfy.jpeg" alt="Doggy">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-  <div class="kortit">
-    <img class="naama" src="file:///C:/Users/kaure/Downloads/comfy.jpeg" alt="Doggy">
-    <img class="selka" src="file:///C:/Users/kaure/OneDrive/Desktop/School/cubes.jpeg" alt="Kortin-selka">
-  </div>
-</section>
-
+    <h1>Muistipeli</h1>
+    <section class='thing'>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>1</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>1</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>2</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>2</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>3</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>3</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>4</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>4</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>5</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>5</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>6</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>6</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>7</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>7</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>8</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>8</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript">
+      const kort = document.querySelectorAll('.kortit');
+      kort.forEach(boom);
+      
+    </script>
   </body>
 </html>
