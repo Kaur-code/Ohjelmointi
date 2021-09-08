@@ -15,6 +15,7 @@
         border: 5px grey solid;
         width: 640px;
         height: 640px;
+        cursor: pointer;
       }
       .kortit {
         border: 5px black solid;
@@ -30,7 +31,7 @@
         height: 150px;
       }
       .kortinSelka:hover {
-        opacity: 0;
+        opacity: 1;
       }
       .kortinSelka {
         background-color: blue;
@@ -56,7 +57,7 @@
   <body>
     <h1>Muistipeli</h1>
     <section class='thing'>
-      <div class="kortit">
+      <div data-value='1' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>1</p>
         </div>
@@ -64,7 +65,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='1' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>1</p>
         </div>
@@ -72,7 +73,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='2' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>2</p>
         </div>
@@ -80,7 +81,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='2' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>2</p>
         </div>
@@ -88,7 +89,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='3' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>3</p>
         </div>
@@ -96,7 +97,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='3' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>3</p>
         </div>
@@ -104,7 +105,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='4' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>4</p>
         </div>
@@ -112,7 +113,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='4' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>4</p>
         </div>
@@ -120,7 +121,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='5' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>5</p>
         </div>
@@ -128,7 +129,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='5' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>5</p>
         </div>
@@ -136,7 +137,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='6' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>6</p>
         </div>
@@ -144,7 +145,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='6' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>6</p>
         </div>
@@ -152,7 +153,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='7' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>7</p>
         </div>
@@ -160,7 +161,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='7' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>7</p>
         </div>
@@ -168,7 +169,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='8' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>8</p>
         </div>
@@ -176,7 +177,7 @@
           <p class='pls2'>!!!</p>
         </div>
       </div>
-      <div class="kortit">
+      <div data-value='8' class="kortit">
         <div class="kortinPaa">
           <p class='pls'>8</p>
         </div>
@@ -188,7 +189,29 @@
     <script type="text/javascript">
       const kort = document.querySelectorAll('.kortit');
       kort.forEach(boom);
-      
+      let arr = [];
+      let num = 0;
+      function boom(item) {
+        item.addEventListener('click', function(){
+          if (arr.length == 2) {
+            arr.length = 0;
+            num = 0;
+          }
+          num += 1
+          let temp = item.children[1];
+          if (num == 1) {
+            let temp2 = item.children[1];
+          }
+          temp.style.opacity = 0;
+          arr.push(item.dataset.value);
+          if (arr.length == 2) {
+            if (arr[0] == arr[1]) {
+              console.log('coom')
+            }
+          }
+          console.log(arr)
+        });
+      }
     </script>
   </body>
 </html>
