@@ -277,7 +277,7 @@
         numbs.sort(() => Math.random() - 0.5);
       };
       shuf2();
-      function shuf2() {
+      function shuf2() { // shuffles cards
         for(let i = 0; i < 16; i++) {
           kort[i].children[0].children[0].innerHTML = shuffle[numbs[i]][0];
           kort[i].setAttribute('data-value', shuffle[numbs[i]][1]);
