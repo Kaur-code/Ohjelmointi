@@ -2,29 +2,39 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Muistipeli</title>
+    <title>Muistipeli(4x4)</title>
     <style media="screen">
+    * {
+      user-select: none;
+    }
       h1 {
+        color: white;
+        font-family: sans-serif;
         text-align: center;
+        font-size: 50px;
+      }
+      body {
+        background-color: #520211
       }
       .thing {
+        z-index: 0;
         display: flex;
         flex-wrap: wrap;
         position: fixed;
         left: 640px;
-        border: 5px grey solid;
+        border: 5px white solid;
         width: 640px;
         height: 640px;
         cursor: pointer;
       }
       .kortit {
-        border: 5px black solid;
+        border: 5px white solid;
         width: 150px;
         height: 150px;
         position: relative;
       }
       .kortinPaa {
-        background-color: green;
+        background-color: #e31045;
         position: absolute;
         top: 0px;
         width: 150px;
@@ -34,28 +44,83 @@
         opacity: 1;
       }
       .kortinSelka {
-        background-color: blue;
+        background-color: #006e26;
         position: absolute;
         width: 150px;
         height: 150px;
         top: 0px;
       }
       .pls {
+        color: white;
         font-size: 60px;
         position: relative;
         bottom: 15px;
         left: 60px;
       }
       .pls2 {
+        color: #e3eb00;
         font-size: 60px;
         position: relative;
         bottom: 15px;
         left: 45px;
       }
+      #button {
+        border: #7aff6e solid 5px;
+        background-color: #2e7828;
+        color: white;
+        padding: 8px;
+        font-size: 30px;
+        margin-left: 20px;
+      }
+      #timer {
+        color: white;
+        position: fixed;
+        font-size: 60px;
+        left: 400px;
+        top: 300px;
+      }
+      .dropdown {
+        position: fixed;
+        right: 500px;
+        top: 35px;
+        display: inline-block;
+      }
+      .links {
+        z-index: 1;
+        display: none;
+        color: white;
+        position: absolute;
+        border: #7aff6e solid 5px;
+        background-color: #2e7828;
+        padding: 8px;
+        font-size: 30px;
+        margin-left: 20px;
+      }
+      .links a {
+        z-index: 1;
+        display: block;
+        text-decoration: none;
+        color: white;
+      }
+      .dropdown:hover .links {
+        display: block;
+      }
+      a:hover {
+        background-color: #7aff6e;
+      }
     </style>
   </head>
   <body>
     <h1>Muistipeli</h1>
+      <div class="dropdown">
+        <span id='button'>4x4</span>
+        <div class="links">
+          <a href="Muistipeli.html">4x4</a>
+          <a href="Muistipeli4x6.html">4x6</a>
+          <a href="Muistipeli6x6.html">6x6</a>
+        </div>
+      </div>
+    <p id='timer'>1:00</p>
     <section class='thing'>
       <div data-value='1' class="kortit">
         <div class="kortinPaa">
@@ -188,9 +253,8 @@
     </section>
     <script type="text/javascript">
       const kort = document.querySelectorAll('.kortit');
-      kort.forEach(boom);
-      let shuffle = {
-        ones: [1, 101],
+      let shuffle = { // first element of these arrays are for innerHTML
+        ones: [1, 101], // second element of these arrays are for identification
         twos: [2, 102],
         threes: [3, 103],
         fours: [4, 104],
@@ -219,9 +283,21 @@
           kort[i].setAttribute('data-value', shuffle[numbs[i]][1]);
         }
       }
-      function onlyUnique(value, index, self) {
+      function onlyUnique(value, index, self) { // to remove all duplicates in the elements array, by checking their dataset value
         return self.indexOf(value) === index;
       }
+      var locked = (function() { // this function is to prevent clicking too many cards in a short amount of time
+        let lock = null;
+        return function() {
+        if (lock != null)
+            return true;
+
+        lock = setTimeout(function() {
+            lock = null;
+        }, 1000);
+        return false;
+        };
+      })();
       let arr = [];
       let arr2 = [];
       let blacklist = [];
@@ -229,39 +305,89 @@
       let temp = '';
       let temp2 = '';
       let voitto = 0;
+      let dupe = '';
+      let secs = 60;
+      let interval = 0;
+      let stop = 0;
+      kort.forEach(boom);
       function boom(item) {
         item.addEventListener('click', function(){
+          if (stop == 1) {
+            return;
+          }
+          if (interval == 0) {
+            let aika = setInterval(function(){
+              if (voitto == 8) {
+                return;
+              }
+              let sixty = Math.floor(secs/60);
+              if (sixty == 0) {
+                if (secs < 10) {
+                  let timer = document.getElementById('timer').innerHTML = `${sixty}:0${secs}`;
+                }
+                else{
+                  let timer = document.getElementById('timer').innerHTML = `${sixty}:${secs}`;
+                }
+              }
+              else if (secs - sixty * 60 == 0) {
+                let timer = document.getElementById('timer').innerHTML = `${sixty}:${secs - sixty * 60}0`;
+              }
+              else {
+                if (secs < 70 && secs > 60) {
+                  let timer = document.getElementById('timer').innerHTML = `${sixty}:0${secs - sixty * 60}`;
+                }else {
+                  let timer = document.getElementById('timer').innerHTML = `${sixty}:${secs - sixty * 60}`;
+                }
+              }
+              if (secs == 0) {
+                stop = 1;
+                alert('AIKA LOPPUI!');
+                clearInterval(aika);
+                return;
+              }
+              secs--;
+            }, 1000)
+          }
+          interval = 1;
+          if (blacklist.includes(item.dataset.value)) { // to check if user clicked on a card that has already been guessed
+            return;
+          }
+          if (locked()) {
+            return;
+          }
+          if (item.dataset.value === dupe) { // to check if user clicked the same card twice
+            return;
+          }
+          dupe = item.dataset.value;
           if (arr.length == 2) {
             arr.length = 0;
             num = 0;
           }
           num += 1
-          temp = item.children[1]; // toka elementti
+          temp = item.children[1]; // first element
           if (num == 1) {
-            temp2 = item.children[1]; // eka elementti
+            temp2 = item.children[1]; // second element
           }
           temp.style.opacity = 0;
-          arr.push(item.dataset.value); // sen numero
-          arr2 = arr.filter(onlyUnique);
+          arr.push(item.dataset.value); // its dataset number
+          arr2 = arr.filter(onlyUnique); // checks if first and second element are the same
           if (arr2.length == 2) {
             if (parseInt(arr2[0]) + 100 == parseInt(arr2[1]) || parseInt(arr2[0]) - 100 == parseInt(arr2[1])) {
-              if (blacklist.includes(arr2[0]) === false && blacklist.includes(arr2[1]) === false) {
-                blacklist.push(arr2[0]);
-                blacklist.push(arr2[1]);
-                console.log(blacklist);
-                voitto += 1;
-                console.log(voitto);
-              }
+              // checks if clicked cards are the same card
+              blacklist.push(arr2[0]);
+              blacklist.push(arr2[1]);
+              // sends correctly clicked cards to blacklist
+              voitto += 1;
             }
-            else {
-              setTimeout(function(){temp.style.opacity = 1;temp2.style.opacity = 1}, 1200);
+            else { // cards return back to normal if guessed incorrectly
+              setTimeout(function(){temp.style.opacity = 1;temp2.style.opacity = 1}, 1000);
             }
           }
           if (voitto == 8) {
             alert('Onneksi olkoon, voitit!')
           }
         });
-      }
+      };
     </script>
   </body>
 </html>
