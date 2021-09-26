@@ -457,7 +457,7 @@
         numbs.sort(() => Math.random() - 0.5);
       };
       shuf2();
-      function shuf2() {
+      function shuf2() { // shuffles cards
         for(let i = 0; i < 36; i++) {
           kort[i].children[0].children[0].innerHTML = shuffle[numbs[i]][0];
           kort[i].setAttribute('data-value', shuffle[numbs[i]][1]);
@@ -496,7 +496,7 @@
             return;
           }
           if (interval == 0) {
-            let aika = setInterval(function(){
+            let aika = setInterval(function(){ // stops timer when victory is achieved
               if (voitto == 18) {
                 return;
               }
@@ -519,7 +519,7 @@
                   let timer = document.getElementById('timer').innerHTML = `${sixty}:${secs - sixty * 60}`;
                 }
               }
-              if (secs == 0) {
+              if (secs == 0) { // if user runs out of time
                 stop = 1;
                 alert('AIKA LOPPUI!');
                 clearInterval(aika);
