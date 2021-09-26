@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Muistipeli(6x6)</title>
+    <style media="screen">
+    * {
+      user-select: none;
+    }
+      h1 {
+        color: white;
+        font-family: sans-serif;
+        text-align: center;
+        font-size: 50px;
+      }
+      body {
+        background-color: #520211
+      }
+      .thing {
+        z-index: 0;
+        display: flex;
+        flex-wrap: wrap;
+        position: fixed;
+        left: 500px;
+        border: 5px white solid;
+        width: 780px;
+        height: 780px;
+        cursor: pointer;
+      }
+      .kortit {
+        border: 5px white solid;
+        width: 120px;
+        height: 120px;
+        position: relative;
+      }
+      .kortinPaa {
+        background-color: #e31045;
+        position: absolute;
+        top: 0px;
+        width: 120px;
+        height: 120px;
+      }
+      .kortinSelka:hover {
+        opacity: 1;
+      }
+      .kortinSelka {
+        background-color: #006e26;
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        top: 0px;
+      }
+      .pls {
+        color: white;
+        font-size: 60px;
+        position: relative;
+        bottom: 15px;
+        left: 60px;
+      }
+      .pls2 {
+        color: #e3eb00;
+        font-size: 60px;
+        position: relative;
+        bottom: 15px;
+        left: 45px;
+      }
+      #button {
+        border: #7aff6e solid 5px;
+        background-color: #2e7828;
+        color: white;
+        padding: 8px;
+        font-size: 30px;
+        margin-left: 20px;
+      }
+      #timer {
+        color: white;
+        position: fixed;
+        font-size: 60px;
+        left: 200px;
+        top: 300px;
+      }
+      .dropdown {
+        position: fixed;
+        right: 500px;
+        top: 35px;
+        display: inline-block;
+      }
+      .links {
+        z-index: 1;
+        display: none;
+        color: white;
+        position: absolute;
+        border: #7aff6e solid 5px;
+        background-color: #2e7828;
+        padding: 8px;
+        font-size: 30px;
+        margin-left: 20px;
+      }
+      .links a {
+        z-index: 1;
+        display: block;
+        text-decoration: none;
+        color: white;
+      }
+      .dropdown:hover .links {
+        display: block;
+      }
+      a:hover {
+        background-color: #7aff6e;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Muistipeli</h1>
+      <div class="dropdown">
+        <span id='button'>6x6</span>
+        <div class="links">
+          <a href="Muistipeli.html">4x4</a>
+          <a href="Muistipeli4x6.html">4x6</a>
+          <a href="Muistipeli6x6.html">6x6</a>
+        </div>
+      </div>
+    <p id='timer'>2:00</p>
+    <section class='thing'>
+      <div data-value='1' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>1</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='1' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>1</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='2' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>2</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='2' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>2</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='3' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>3</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='3' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>3</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='4' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>4</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='4' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>4</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='5' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>5</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='5' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>5</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='6' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>6</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='6' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>6</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='7' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>7</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='7' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>7</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='8' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>8</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='8' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>8</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='9' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>9</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='9' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>9</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='10' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>10</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='10' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>10</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='11' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>11</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='11' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>11</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='12' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>12</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='12' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>12</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='13' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>13</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='13' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>13</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='14' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>14</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='14' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>14</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='15' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>15</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='15' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>15</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='16' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>16</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='16' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>16</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='17' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>17</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='17' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>17</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='18' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>18</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+      <div data-value='18' class="kortit">
+        <div class="kortinPaa">
+          <p class='pls'>18</p>
+        </div>
+        <div class="kortinSelka">
+          <p class='pls2'>!!!</p>
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript">
+      const kort = document.querySelectorAll('.kortit');
+      let shuffle = { // first element of these arrays are for innerHTML
+        ones: [1, 101], // second element of these arrays are for identification
+        twos: [2, 102],
+        threes: [3, 103],
+        fours: [4, 104],
+        fives: [5, 105],
+        sixes: [6, 106],
+        sevens: [7, 107],
+        eights: [8, 108],
+        nines: [9, 109],
+        tens: [10, 110],
+        elevens: [11, 111],
+        twelves: [12, 112],
+        thirteens: [13, 113],
+        fourteens: [14, 114],
+        fiftheens: [15, 115],
+        sixteens: [16, 116],
+        seventeens: [17, 117],
+        eighteens: [18, 118],
+        ones2: [1, 201],
+        twos2: [2, 202],
+        threes2: [3, 203],
+        fours2: [4, 204],
+        fives2: [5, 205],
+        sixes2: [6, 206],
+        sevens2: [7, 207],
+        eights2: [8, 208],
+        nines2: [9, 209],
+        tens2: [10, 210],
+        elevens2: [11, 211],
+        twelves2: [12, 212],
+        thirteens2: [13, 213],
+        fourteens2: [14, 214],
+        fiftheens2: [15, 215],
+        sixteens2: [16, 216],
+        seventeens2: [17, 217],
+        eighteens2: [18, 218],
+      }
+      let numbs = Object.getOwnPropertyNames(shuffle);
+      shuf1();
+      function shuf1() {
+        numbs.sort(() => Math.random() - 0.5);
+      };
+      shuf2();
+      function shuf2() {
+        for(let i = 0; i < 36; i++) {
+          kort[i].children[0].children[0].innerHTML = shuffle[numbs[i]][0];
+          kort[i].setAttribute('data-value', shuffle[numbs[i]][1]);
+        }
+      }
+      function onlyUnique(value, index, self) { // to remove all duplicates in the elements array, by checking their dataset value
+        return self.indexOf(value) === index;
+      }
+      var locked = (function() { // this function is to prevent clicking too many cards in a short amount of time
+        let lock = null;
+        return function() {
+        if (lock != null)
+            return true;
+
+        lock = setTimeout(function() {
+            lock = null;
+        }, 1000);
+        return false;
+        };
+      })();
+      let arr = [];
+      let arr2 = [];
+      let blacklist = [];
+      let num = 0;
+      let temp = '';
+      let temp2 = '';
+      let voitto = 0;
+      let dupe = '';
+      let secs = 120;
+      let interval = 0;
+      let stop = 0;
+      kort.forEach(boom);
+      function boom(item) {
+        item.addEventListener('click', function(){
+          if (stop == 1) {
+            return;
+          }
+          if (interval == 0) {
+            let aika = setInterval(function(){
+              if (voitto == 18) {
+                return;
+              }
+              let sixty = Math.floor(secs/60);
+              if (sixty == 0) {
+                if (secs < 10) {
+                  let timer = document.getElementById('timer').innerHTML = `${sixty}:0${secs}`;
+                }
+                else{
+                  let timer = document.getElementById('timer').innerHTML = `${sixty}:${secs}`;
+                }
+              }
+              else if (secs - sixty * 60 == 0) {
+                let timer = document.getElementById('timer').innerHTML = `${sixty}:${secs - sixty * 60}0`;
+              }
+              else {
+                if (secs < 70 && secs > 60) {
+                  let timer = document.getElementById('timer').innerHTML = `${sixty}:0${secs - sixty * 60}`;
+                }else {
+                  let timer = document.getElementById('timer').innerHTML = `${sixty}:${secs - sixty * 60}`;
+                }
+              }
+              if (secs == 0) {
+                stop = 1;
+                alert('AIKA LOPPUI!');
+                clearInterval(aika);
+                return;
+              }
+              secs--;
+            }, 1000)
+          }
+          interval = 1;
+          if (blacklist.includes(item.dataset.value)) { // to check if user clicked on a card that has already been guessed
+            return;
+          }
+          if (locked()) {
+            return;
+          }
+          if (item.dataset.value === dupe) { // to check if user clicked the same card twice
+            return;
+          }
+          dupe = item.dataset.value;
+          if (arr.length == 2) {
+            arr.length = 0;
+            num = 0;
+          }
+          num += 1
+          temp = item.children[1]; // first element
+          if (num == 1) {
+            temp2 = item.children[1]; // second element
+          }
+          temp.style.opacity = 0;
+          arr.push(item.dataset.value); // its dataset number
+          arr2 = arr.filter(onlyUnique); // checks if first and second element are the same
+          if (arr2.length == 2) {
+            if (parseInt(arr2[0]) + 100 == parseInt(arr2[1]) || parseInt(arr2[0]) - 100 == parseInt(arr2[1])) {
+              // checks if clicked cards are the same card
+              blacklist.push(arr2[0]);
+              blacklist.push(arr2[1]);
+              // sends correctly clicked cards to blacklist
+              voitto += 1;
+            }
+            else { // cards return back to normal if guessed incorrectly
+              setTimeout(function(){temp.style.opacity = 1;temp2.style.opacity = 1}, 1000);
+            }
+          }
+          if (voitto == 18) {
+            alert('Onneksi olkoon, voitit!')
+          }
+        });
+      };
+    </script>
+  </body>
+</html>
