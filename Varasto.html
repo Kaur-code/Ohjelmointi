@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style media="screen">
+      * {
+        padding: 3px;
+      }
+      .wid1 {
+        width: 300px;
+      }
+      #para {
+        width: 500px;
+      }
+      .form {
+        margin-left: 30px;
+        position: fixed;
+        border: 1px solid black
+
+      }
+      #otsikko {
+        text-align: center;
+        position: relative;
+      }
+      #kuvaus {
+        text-align: center;
+        position: relative;
+      }
+      #laheta {
+        margin-bottom: 5px;
+        margin-left: 5px;
+      }
+      #pudotus {
+        margin-left: 5px;
+      }
+      #button {
+        margin-bottom: 10px;
+        font-size: 20px;
+        margin-left: 100px;
+      }
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form id='kyselylomake' method="post" class='form' onsubmit="return tarkasta()" action="Lomake2.html">
+      <h1 id='otsikko'>Kirjaudu</h1>
+      <table class='wid1'>
+        <tr>
+          <td>Etunimesi: </td>
+          <td><input type="text" id='etunimi' value=""></td>
+        </tr>
+        <tr>
+          <td>Sukunimesi: </td>
+          <td><input type="text" id='sukunimi' value=""></td>
+        </tr>
+        <tr>
+          <td>Lähiosoite: </td>
+          <td><input type="text" id='lahiosoite' value=""></td>
+        </tr>
+        <tr>
+          <td>Postinumero: </td>
+          <td><input type='text' id='postinumero'></td>
+        </tr>
+        <tr>
+          <td>Postitoimipaikka: </td>
+          <td><input type="text" id='ptp'></td>
+        </tr>
+        <tr>
+          <td>Puhelin: </td>
+          <td><input type="text" id='puhelin'></td>
+        </tr>
+        <tr>
+          <td>Sähköposti: </td>
+          <td><input type='text' id='sahkoposti'></td>
+        </tr>
+        <tr>
+      </table>
+      <button type="button" id='button' onclick='storag()'>SUBMIT</button><br>
+      <select name="items" id='items'>
+        <option value="etunimi">Etunimi</option>
+        <option value="sukunimi">Sukunimi</option>
+        <option value="lahiosoite">Lähiosoite</option>
+        <option value="postinumero">Postinumero</option>
+        <option value="ptp">Postitoimipaikka</option>
+        <option value="puhelin">Puhelin</option>
+        <option value="sahkoposti">Sähköposti</option>
+      </select>
+      <button type="button" name="button" onclick='getStorag()'>Access storage</button>
+    </form>
+    <script>
+      function storag() {
+        let etunimi = document.getElementById('etunimi').value;
+        let sukunimi = document.getElementById('sukunimi').value;
+        let lahiosoite = document.getElementById('lahiosoite').value;
+        let postinumero = document.getElementById('postinumero').value;
+        let ptp = document.getElementById('ptp').value;
+        let puhelin = document.getElementById('puhelin').value;
+        let sahkoposti = document.getElementById('sahkoposti').value;
+        localStorage.setItem("fname", etunimi);
+        localStorage.setItem('lname', sukunimi)
+        localStorage.setItem("losoite", lahiosoite);
+        localStorage.setItem("pn", postinumero);
+        localStorage.setItem("ptp", ptp);
+        localStorage.setItem("number", puhelin);
+        localStorage.setItem("email", sahkoposti);
+      }
+      function getStorag() {
+        let selekt = document.getElementById('items').value
+        switch(selekt) {
+          case 'etunimi':
+            alert(localStorage.getItem('fname'));
+            break;
+          case 'sukunimi':
+            alert(localStorage.getItem('lname'));
+            break;
+          case 'lahiosoite':
+            alert(localStorage.getItem('losoite'));
+            break;
+          case 'postinumero':
+            alert(localStorage.getItem('pn'));
+            break;
+          case 'ptp':
+            alert(localStorage.getItem('ptp'));
+            break;
+          case 'puhelin':
+            alert(localStorage.getItem('number'));
+            break;
+          case 'sahkoposti':
+            alert(localStorage.getItem('email'));
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
