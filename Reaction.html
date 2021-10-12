@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Reaction Speed</title>
+    <style media="screen">
+      #main {
+        margin: auto;
+        background-color: red;
+        width: 1600px;
+        height: 740px;
+        position: static;
+      }
+      .head {
+        text-align: center;
+      }
+      #start {
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 740px;
+        font-size: 60px;
+      }
+      #main:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="head">
+      <h1>Test your reaction speed</h1>
+    </div>
+    <div id='main'>
+      <p id='start'>START</p>
+    </div>
+    <script type="text/javascript">
+      const text = document.getElementById('start');
+      const main = document.getElementById('main');
+      let stop = 0;
+      let done = 0;
+      main.addEventListener('click', yoop);
+      function yoop() {
+        if (stop == 1) {
+          return;
+        }
+        stop = 1;
+        text.innerHTML = 'CLICK WHEN GREEN';
+        let rando = Math.random() * 10000; // 1-10 seconds to turn green
+        setTimeout(function(){
+          main.style.backgroundColor = 'green';
+          count();
+          main.addEventListener('click', stop2);
+        }, rando)
+      }
+      function count() {
+        let startTime = Date.now(); // Date.now method returns the amount of milliseconds since january 1 1970
+        var interval = setInterval(function() {
+          if (done == 1) {
+            return;
+          }
+          var elapsedTime = Date.now() - startTime; // I subtract with startTime to get an accurate number since this function activated
+          text.innerHTML = (elapsedTime / 1000).toFixed(3);
+        }, 1);
+      }
+      function stop2() {
+        done = 1;
+      }
+    </script>
+  </body>
+</html>
